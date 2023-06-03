@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam linetype ortho
+
+Base1 *-- Child1
+Base2 o-- Child2
+
+hide empty members
+@enduml
