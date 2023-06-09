@@ -80,6 +80,24 @@ public class RegexText {
     assertThat(matcher2.group(1)).isEqualTo("278350000834378");
     assertThat(matcher2.group(2)).isEqualTo("0000");
     assertThat(matcher2.group(3)).isEqualTo("dfkqjh");
+  }
 
+  @Test
+  void removeDuplicates() {
+    Pattern findDuplicates = Pattern.compile("(\\b.+\\b)\\s+(\\1)");
+    Matcher matcher = findDuplicates.matcher("This is is a test message");
+    assertThat(matcher.find()).isTrue();
+    assertThat(matcher.start()).isEqualTo(5);
+    assertThat(matcher.end()).isEqualTo(10);
+    assertThat(matcher.replaceAll(matcher.group(1))).isEqualTo("This is a test message");
+
+    Matcher matcher1 = findDuplicates.matcher("This is is is a test test message message message message");
+    StringBuilder builder = new StringBuilder();
+    while (matcher1.find()) {
+      builder.setLength(0);
+      matcher1.appendReplacement(builder, matcher1.group(1)).appendTail(builder);
+      matcher1.reset(builder.toString());
+    }
+    assertThat(builder.toString()).isEqualTo("This is a test message");
   }
 }
