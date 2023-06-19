@@ -69,6 +69,11 @@
       <version>3.12.4</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.atp-fivt</groupId>
+      <artifactId>ljv</artifactId>
+      <version>1.04</version>
+    </dependency>
   </dependencies>
 
   <build>
