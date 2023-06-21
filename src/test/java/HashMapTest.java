@@ -47,12 +47,12 @@ public class HashMapTest {
     Map<String, Object> map = new HashMap<>(4);
     map.put(s1, 1);
     map.put(s2, 1);
-   // browse(ljv, map);
+    browse(ljv, map);
     map.put("gg", 2);
     map.put("utyu", 3);
     map.put("fgi3", 3);
     map.put("34in", 3);
-  //  browse(ljv, map);
+    browse(ljv, map);
 
     System.out.println(map);
   }
