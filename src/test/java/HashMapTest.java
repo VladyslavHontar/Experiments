@@ -58,6 +58,15 @@ public class HashMapTest {
   }
 
   @Test
+  void name2() {
+    HashMap<Object, Object> map = new HashMap<>();
+    map.put("ABC", 1);
+    map.put(map, 2);
+//    map.put(map, 3);
+    System.out.println(map);
+  }
+
+  @Test
   void collisions() {
     LJV ljv = new LJV().setTreatAsPrimitive(Integer.class).setTreatAsPrimitive(String.class);
     Map<Object, Object> map = new HashMap<>(64);
