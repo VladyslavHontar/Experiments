@@ -1,34 +1,75 @@
 package stack;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Launcher {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //  int x = sc.nextInt();           // is polindrome
         //  String s = sc.nextLine();       // roman to int
-        String[] strs = {"flower", "flow", "flight"};
+        String[] strs = {"flower", "flow", "flight", "fl", "fla", "flaska", "flask"};
+        String[] strs2 = {"dog","racecar","car"};
         Solution sol = new Solution();
         //  System.out.println(sol.isPolindrome(x));
         System.out.println(sol.longestCommonPrefix(strs));
+        System.out.println(sol.longestCommonPrefix(strs2));
     }
 }
 class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char ch: s.toCharArray()) {
+            switch (ch) {
+                case '(':
+                case '{':
+                case '[':
+                    stack.push(ch);
+                    break;
+                case ')':
+                    if(stack.isEmpty() || stack.pop() != '(') {
+                    return false;
+                }
+                break;
+                case '}':
+                    if(stack.isEmpty() || stack.pop() != '{') {
+                    return false;
+                }
+                break;
+                case ']':
+                    if(stack.isEmpty() || stack.pop() != '[') {
+                    return false;
+                }
+                break;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+
     public String longestCommonPrefix(String[] strs) {
         String a = "";
-        for (int i = 0; i < strs[0].length(); i++) {
-            char c = strs[0].charAt(i);
-            boolean b = true;
+        int i = 0;
+        int k = strs[0].length();
+        int j = 0;
+        if (strs.length > 0) {
             for (String str : strs) {
-                if (str.length() <= i || str.charAt(i) != c) {
-                    b = false;
-                    break;
+                if (str.length() < k) {
+                    k = str.length();
                 }
             }
-            if (b) {
-                a += c;
-            } else {
-                break;
+            while (strs[i].charAt(j) == strs[i+1].charAt(j)) {
+                a += strs[i].charAt(j);
+                if (i < strs.length - 2) {
+                    i++;
+                    if (j < k - 1) {
+                        j++;
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
             }
         }
         return a;
