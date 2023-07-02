@@ -2,22 +2,41 @@ package stack;
 
 import java.util.Scanner;
 import java.util.Stack;
-import
 
 public class Launcher {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //  int x = sc.nextInt();           // is polindrome
         //  String s = sc.nextLine();       // roman to int
+        int nums[] = {-2,1,-3,4,-1,2,1,-5,4};
         String[] strs = {"flower", "flow", "flight", "fl", "fla", "flaska", "flask"};
         String[] strs2 = {"dog","racecar","car"};
         Solution sol = new Solution();
         //  System.out.println(sol.isPolindrome(x));
+        System.out.println(sol.maxSubArray(nums));
         System.out.println(sol.longestCommonPrefix(strs));
         System.out.println(sol.longestCommonPrefix(strs2));
     }
 }
 class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            currentSum += nums[i];
+
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+            }
+
+            if (currentSum < 0) {
+                currentSum = 0;
+            }
+        }
+
+        return maxSum;
+    }
     public class ListNode {
       int val;
       ListNode next;
