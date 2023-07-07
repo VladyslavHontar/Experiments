@@ -34,4 +34,13 @@ public class FileTest {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    void relativePath() {
+        try (InputStream in = new FileInputStream("data/Txt.txt")) {
+            assertThat(in.available()).isEqualTo(5);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
 }
