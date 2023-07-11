@@ -82,14 +82,14 @@ public class VarianceTest {
   }
 }
 
-class A {
-  public Number method() throws Exception {
-    return null;
-  }
-}
-class B extends A {
-  @Override
-  public Integer method() throws IOException {
-    return null;
-  }
-}
+//class A {
+//  public Number method() throws Exception {
+//    return null;
+//  }
+//}
+//class B extends A {
+//  @Override
+//  public Integer method() throws IOException {
+//    return null;
+//  }
+//}
