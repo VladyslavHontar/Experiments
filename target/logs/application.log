@@ -1,0 +1,4 @@
+[DEBUG] 2023-07-16 19:28:40.473 [main] LoggingExample - debug
+[INFO ] 2023-07-16 19:28:40.476 [main] LoggingExample - info
+[WARN ] 2023-07-16 19:28:40.477 [main] LoggingExample - warn
+[ERROR] 2023-07-16 19:28:40.477 [main] LoggingExample - error

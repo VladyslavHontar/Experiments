@@ -1,10 +1,8 @@
+package bad_java.experiments;
+
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Predicate;
 
 public class IteratorExample2 {
   public static void main(String[] args) {
