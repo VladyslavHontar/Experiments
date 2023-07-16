@@ -1,7 +1,6 @@
+import bad_java.experiments.CustomOptional;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -21,7 +20,7 @@ public class VarianceTest {
     List<? extends Number> numbers = integers;
 
     CustomOptional<String> stringOptional = null;
-    //   CustomOptional<Object> objectOptional = stringOptional;
+    //   bad_java.experimets.CustomOptional<Object> objectOptional = stringOptional;
 
     List<Number> numberList = null;
     List<? super Integer> intergerList = numberList;

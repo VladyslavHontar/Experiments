@@ -1,3 +1,5 @@
+package bad_java.experiments;
+
 public enum Season {
     UNKNOWN,
     WINTER,

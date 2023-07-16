@@ -1,3 +1,4 @@
+import bad_java.experiments.User;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,5 @@
+package bad_java.experiments;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +24,7 @@ public class User implements Serializable {
 
   @Override
   public String toString() {
-    return "User{" +
+    return "bad_java.experimets.User{" +
             "id=" + id +
             ", username " + username + "\'" +
             ", type=" + type +
