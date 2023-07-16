@@ -7,7 +7,7 @@ public class ModifieidStringsTest {
   @Test
   void name() {
     StringBuilder stringBuilder = new StringBuilder();
-    final String base = "User#";
+    final String base = "bad_java.experimets.User#";
     stringBuilder.append(base);
     for (int i = 0; i < 100; i++) {
       stringBuilder.setLength(base.length());

@@ -1,10 +1,12 @@
+package bad_java.experiments;
+
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class NumberOptional<T extends Number>{
+public class CustomOptional<T> {
   private T value;
 
-  public NumberOptional(T value) {
+  public CustomOptional(T value) {
     this.value = value;
   }
 
@@ -27,7 +29,7 @@ public class NumberOptional<T extends Number>{
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    NumberOptional<?> that = (NumberOptional<?>) o;
+    CustomOptional<?> that = (CustomOptional<?>) o;
     return Objects.equals(value, that.value);
   }
 
@@ -40,6 +42,6 @@ public class NumberOptional<T extends Number>{
   public String toString() {
     return value == null
             ? "Optional empty"
-            : "CustomOptional[" + "value=" + value + ']';
+            : "bad_java.experimets.CustomOptional[" + "value=" + value + ']';
   }
 }

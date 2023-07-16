@@ -1,3 +1,5 @@
+package bad_java.experiments;
+
 class Shape {
   double s;
   public double area() {

@@ -1,3 +1,4 @@
+import bad_java.experiments.Season;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;

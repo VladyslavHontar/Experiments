@@ -1,3 +1,5 @@
+package bad_java.experiments;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ListIterator;
