@@ -1,7 +1,12 @@
+import bad_java.experiments.BiFunctions;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -83,8 +88,64 @@ public class LambdasTest {
     test.delimiter = delimiter;
     return test;
   }
-}
 
+  @Test
+  void typeMethodReference() {
+    String str = "Hello";
+
+    Function<String, Integer> getLength1 = s -> s.length();
+    Function<String, Integer> getLength2 = s -> LambdasTest.getLength(s);
+    Function<String, Integer> getLength3 = LambdasTest::getLength;
+    Function<String, Integer> getLength4 = String::length;
+  }
+  public static int getLength(String str) {
+    return str.length();
+  }
+
+  @Test
+  void constructorReference() {
+    Person person = new Person("Vlad", "Hontar", 19);
+
+    PersonFactory factory1 = new PersonFactory() {
+      @Override
+      public Person create(String name, String surname, int age) {
+        return new Person(name, surname, age);
+      }
+    };
+
+    PersonFactory factory2 = (name, surname, age) -> new Person(name, surname, age);
+    PersonFactory factory3 = Person::new;
+    Person another = factory3.create("Vlad", "Hontar", 19);
+    assertThat(person).isEqualTo(another);
+
+    BiFunction<String, String, Person> factory4 = Person::new;
+    Person applied = factory4.apply("Vlad", "Hontar");
+    assertThat(applied.getAge()).isZero();
+
+  }
+}
+@Data
+class Person {
+  private String name;
+  private String surname;
+  private int age;
+
+  public Person(String name, String surname, int age) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+  }
+
+  public Person(String name, String surname) {
+    this.name = name;
+    this.surname = surname;
+    this.age = 0;
+  }
+
+}
+interface PersonFactory {
+  Person create(String name, String surname, int age);
+}
 @FunctionalInterface
 interface Summator<T> {
   T sum(T a, T b);
