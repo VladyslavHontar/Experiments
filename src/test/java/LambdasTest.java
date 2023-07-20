@@ -4,6 +4,7 @@ import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -122,6 +123,21 @@ public class LambdasTest {
     Person applied = factory4.apply("Vlad", "Hontar");
     assertThat(applied.getAge()).isZero();
 
+  }
+
+  @Test
+  void mutableLambda() {
+    //int counter = 0;    this shit aint gonna work
+    AtomicInteger counter = new AtomicInteger();
+    int[] counter2 = new int[1];
+    ((Runnable)() -> {
+      for (int i = 0; i < 10; i++) {
+        counter.incrementAndGet();
+        counter2[0]++;
+      }
+    }).run();
+    counter.get();
+    int result = counter2[0];
   }
 }
 @Data
