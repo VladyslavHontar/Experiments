@@ -2,6 +2,7 @@ import bad_java.experiments.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -26,13 +27,15 @@ public class ComparatorTest {
 
   @Test
   void testByMultipleAttributes() {
-    List<Person> list = new ArrayList<>(List.of(new Person("A", "b"),
-                                              new Person("B", "a"),
-                                              new Person("D", "b"),
-                                              new Person("C", "c"),
-                                              new Person("A", "d"),
-                                              new Person("U", "b")));
-    list.sort(Comparator.comparing(Person::getSurname).thenComparing(Person::getName));
+    List<Person> list = new ArrayList<>(Arrays.asList(
+            null,
+            new Person("A", "b"),
+            new Person("B", "a"),
+            new Person("D", "b"),
+            new Person("C", "c"),
+            new Person("A", "d"),
+            new Person("U", "b")));
+    list.sort(Comparator.nullsLast(Comparator.comparing(Person::getSurname).thenComparing(Person::getName)));    //nullFirst or nullLast prevents NPE
     list.forEach(System.out::println);
   }
 
