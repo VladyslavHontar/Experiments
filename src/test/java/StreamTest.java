@@ -1,12 +1,11 @@
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamTest {
@@ -31,6 +30,8 @@ public class StreamTest {
                    .map(Person::getName)
                    .get()
                    .isEqualTo("Sidor");
+
+    Map<String, Integer> map = list.stream().collect(toMap(str -> str, String::length));
   }
 
   public List<Client> getClients () {
