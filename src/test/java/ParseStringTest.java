@@ -24,7 +24,10 @@ public class ParseStringTest {
       return Pattern.compile("\\W+")
                     .splitAsStream(text)
                     .map(String::toLowerCase)
-                    .collect(groupingBy(identity(), counting())).entrySet().stream().sorted(Entry.<String, Long>comparingByValue().reversed().thenComparing(Entry.comparingByKey()))
+                    .collect(groupingBy(identity(), counting()))
+                    .entrySet()
+                    .stream()
+                    .sorted(Entry.<String, Long>comparingByValue().reversed().thenComparing(Entry.comparingByKey()))
                     .map(Entry::getKey)
                     .limit(numberWords)
                     .collect(toList());
