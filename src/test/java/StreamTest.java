@@ -211,5 +211,12 @@ public class StreamTest {
 
     Map<Boolean, List<Employee>> collect2 = employees.stream().collect(partitioningBy(e -> e.getPerson().getAge() > 30));
     System.out.println(collect2);
+
+    System.out.println();
+    // 8. Find the most experienced employee
+
+    OptionalInt max = employees.stream().map(Employee::getJobHistory).flatMap(Collection::stream).mapToInt(JobHistoryEntry::getDuration).max();
+
+    System.out.println(max.orElseThrow());
   }
 }
