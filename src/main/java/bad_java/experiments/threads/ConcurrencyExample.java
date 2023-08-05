@@ -1,4 +1,4 @@
-package bad_java.experiments;
+package bad_java.experiments.threads;
 
 import java.util.concurrent.TimeUnit;
 
