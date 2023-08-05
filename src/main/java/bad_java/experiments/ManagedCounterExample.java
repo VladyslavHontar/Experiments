@@ -18,6 +18,7 @@ public class ManagedCounterExample {
 }
 @Getter
 class ManagedCounter implements Runnable {
+  // Visibility problem
   private volatile State state = State.NEW;
   private final long limit;
   private long current;
