@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -9,6 +11,7 @@ public class Launcher {
         //  int x = sc.nextInt();           // is polindrome
         //  String s = sc.nextLine();       // roman to int
         int nums[] = {-2,1,-3,4,-1,2,1,-5,4};
+        int i;
         String[] strs = {"flower", "flow", "flight", "fl", "fla", "flaska", "flask"};
         String[] strs2 = {"dog","racecar","car"};
         Solution sol = new Solution();
@@ -19,6 +22,20 @@ public class Launcher {
     }
 }
 class Solution {
+    public int climbStairs(int n) {
+        Map<Integer, Integer> memo = new HashMap<>();
+        return climbStairs(n, memo);
+    }
+
+    private int climbStairs(int n, Map<Integer, Integer> memo) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        if (!memo.containsKey(n)) {
+            memo.put(n, climbStairs(n-1, memo) + climbStairs(n-2, memo));
+        }
+        return memo.get(n);
+    }
     public int maxSubArray(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
         int currentSum = 0;
