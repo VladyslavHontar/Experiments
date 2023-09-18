@@ -144,7 +144,7 @@ public class VariableOperators {
 
       map[row][col] = String.valueOf(s.charAt(i));
 
-      if (numRows == 1) {continue;}
+      if (numRows == 1) {return s;}
       if(i % (numRows-1) == 0 && i >0){
         goingF = !goingF;
       }
