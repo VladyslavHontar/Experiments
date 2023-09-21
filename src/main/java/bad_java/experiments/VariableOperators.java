@@ -1,5 +1,7 @@
 package bad_java.experiments;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class VariableOperators {
@@ -11,7 +13,8 @@ public class VariableOperators {
 //    largestSmallest(sc);
 //    oddEven(sc);
 //    positiveNegative(sc);
-    System.out.println(convert("P", 1));
+//    System.out.println(grade(40));
+    inRange(sc);
     sc.close();
   }
   public static void sumProductDifference(Scanner sc) {
@@ -134,39 +137,41 @@ public class VariableOperators {
     System.out.println("There is " + positive + " positive numbers");
     System.out.println("There is " + zero + " zeros");
   }
-  public static String convert(String s, int numRows) {
-    String[][] map = new String[numRows][(s.length() / numRows + 1) * numRows];
-    boolean goingF = true;
+  public static String grade(int grade) {
+    if (grade >= 85) {
+      return "A";
+    } else if (grade >= 70) {
+      return "B";
+    } else if (grade >= 55) {
+      return "C";
+    } else if (grade >= 40) {
+      return "D";
+    } else {
+      return "F";
+    }
+  }
+  public static void inRange(Scanner scanner) {
+    System.out.println("Write the first integer: ");
+    int num1 = scanner.nextInt();
+    System.out.println("Write the second integer: ");
+    int num2 = scanner.nextInt();
+    boolean isNumber1InRange = false, isNumber2InRange = false;
 
-    int row = 0;
-    int col = 0;
-    for (int i = 0; i < s.length(); i++) {
-
-      map[row][col] = String.valueOf(s.charAt(i));
-
-      if (numRows == 1) {return s;}
-      if(i % (numRows-1) == 0 && i >0){
-        goingF = !goingF;
-      }
-
-        if(goingF){
-          row++;
-        }else{
-          row--;
-          col++;
-        }
-
+    if (num1 >= 67 && num1 <= 73) {
+      System.out.println("Num1 is in range");
+      isNumber1InRange = true;
+    } else {
+      System.out.println("Num1 is outside of the range");
+    }
+    if (num2 > 100 && num2 < 999) {
+      System.out.println("Num2 is in the range");
+      isNumber2InRange = true;
+    } else {
+      System.out.println("Num2 is outside of the range");
     }
 
-    String result = "";
-    for (int i = 0; i < map.length; i++) {
-      for (int j = 0; j < map[i].length; j++) {
-        result = result + (map[i][j] != null ?map[i][j] : "");
-        if (j == map[i].length) {
-          j = 0;
-        }
-      }
+    if (!isNumber1InRange && !isNumber2InRange) {
+      System.out.println("Both numbers are outside of the range");
     }
-    return  result;
   }
 }
