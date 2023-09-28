@@ -226,17 +226,17 @@ class Solution {
   }
 
   public int reverse(int x) {
-    String s1 = Integer.toString(x);
-    List<Character> list = new ArrayList<>();
-    String s2 = "";
-    for (int i = 0; i < s1.length(); i++) {
-      list.add(s1.charAt(i));
+    StringBuilder sb = new StringBuilder();
+    sb.append(Math.abs(x));
+    sb.reverse();
+    int pos = Integer.parseInt(sb.toString());
+    int res;
+    if (x < 0) {
+      res = (~(pos - 1));
+    } else {
+      res = pos;
     }
-    for (int i = s1.length() - 1; i >= 0; i--) {
-      s2 = s2 + list.get(i);
-    }
-
-    return 0;
+    return res;
   }
 }
 

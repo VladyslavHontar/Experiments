@@ -160,7 +160,7 @@ public class VariableOperators {
     if (num1 >= 67 && num1 <= 73) {
       System.out.println("Num1 is in range");
       isNumber1InRange = true;
-    } else {
+    } else {  
       System.out.println("Num1 is outside of the range");
     }
     if (num2 > 100 && num2 < 999) {
